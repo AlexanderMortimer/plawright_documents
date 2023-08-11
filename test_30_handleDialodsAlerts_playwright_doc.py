@@ -23,6 +23,7 @@ def test_checkbox(playwright:Playwright):
         page.get_by_role("button",name="Confirm Alert Box").click()
     dialog = dialog_info.value
     assert dialog.message == "Confirm pop up with OK and Cancel button"
+    
 
 
 
