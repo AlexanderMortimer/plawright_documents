@@ -14,7 +14,7 @@ def test_click_button(playwright:Playwright):
 
     # page.query_selector("text=Clike Me").hover()
     click = page.query_selector("text=Clike Me")
-    print(click.json_value)
+    # print(click.json_value)
 
     context.close()
     browser.close()
