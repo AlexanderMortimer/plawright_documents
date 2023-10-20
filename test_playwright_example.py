@@ -34,7 +34,7 @@ def run(playwright: Playwright) -> None:
     page.goto("https://demoqa.com/")
     page.locator("div").filter(has_text=re.compile(r"^Alerts, Frame & Windows$")).first.click()
     page.locator("li").filter(has_text=re.compile(r"^Frames$")).click()
-    print(page.frame_locator.last())
+    page.frame_locator.
     # ---------------------
     context.close()
     browser.close()
