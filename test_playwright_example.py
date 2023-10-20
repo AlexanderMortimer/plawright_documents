@@ -20,6 +20,26 @@
 #     # Expects the URL to contain intro.
 #     expect(page).to_have_url(re.compile(".*intro"))
 
-def test_return():
-    return False
-assert test_return()
+# def test_return():
+#     return False
+# assert test_return()
+
+from playwright.sync_api import Playwright, sync_playwright, expect
+import re
+
+def run(playwright: Playwright) -> None:
+    browser = playwright.chromium.launch(headless=False)
+    context = browser.new_context()
+    page = context.new_page()
+    page.goto("https://demoqa.com/")
+    page.locator("div").filter(has_text=re.compile(r"^Alerts, Frame & Windows$")).first.click()
+    page.locator("li").filter(has_text=re.compile(r"^Frames$")).click()
+    print(page.frame_locator.last())
+    # ---------------------
+    context.close()
+    browser.close()
+
+    
+
+with sync_playwright() as playwright:
+    run(playwright)
